@@ -1,0 +1,26 @@
+    <p-dialog [(visible)]="createZoneActiviteInteractionRechercheDialog" [style]="{width: '70vw'}" header="ZoneActiviteInteractionRecherche Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="ZoneActiviteInteractionRecherche">
+                        <div class="p-field">
+                            <label for="1">pays</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="pays" id="1" [(ngModel)]="selectedZoneActiviteInteractionRecherche.pays" required autofocus />
+                        </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

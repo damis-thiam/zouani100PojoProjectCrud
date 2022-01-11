@@ -1,0 +1,23 @@
+<p-dialog [(visible)]="editFoireQuestionDialog" [style]="{width: '450px'}" header="FoireQuestion Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editFoireQuestionForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">question</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="question" id="1" formControlName="question" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="2">reponse</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="reponse" id="2" formControlName="reponse" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="3">numeroOrdre</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="numeroOrdre"  formControlName="numeroOrdre"></p-inputNumber>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

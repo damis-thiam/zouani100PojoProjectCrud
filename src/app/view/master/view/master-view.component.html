@@ -1,0 +1,18 @@
+<p-dialog [(visible)]="viewMasterDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="total">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="1" [(ngModel)]="selectedMaster.intitule" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">international</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="2"  [(ngModel)]="selectedMaster.international" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

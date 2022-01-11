@@ -1,0 +1,43 @@
+<p-dialog [(visible)]="editDirectionEncadrementDoctorantDialog" [style]="{width: '450px'}" header="DirectionEncadrementDoctorant Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editDirectionEncadrementDoctorantForm">
+    <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="1">annee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  formControlName="annee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="2">tempsEstimePourCetteAnnne</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  formControlName="tempsEstimePourCetteAnnne"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="3">sujetThese</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="sujetThese" id="3" formControlName="sujetThese" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="4">dateDebutThese</label>
+                <p-calendar  formControlName="dateDebutThese" dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+            <div class="p-field">
+                <label for="5">datePrevuSoutenanceThese</label>
+                <p-calendar  formControlName="datePrevuSoutenanceThese" dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+                <div class="p-field">
+                    <label for="6">codirectionInternationale</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="codirectionInternationale"  formControlName="codirectionInternationale"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="7">intituleEd</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intituleEd" id="7" formControlName="intituleEd" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="8">numeroEd</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="numeroEd" id="8" formControlName="numeroEd" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

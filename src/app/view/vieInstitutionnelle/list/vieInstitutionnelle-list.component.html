@@ -1,0 +1,95 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateVieInstitutionnelle('vieinstitutionnelle')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimeMin" [(ngModel)]="searchVieInstitutionnelle.tempsEstimeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimeMax" [(ngModel)]="searchVieInstitutionnelle.tempsEstimeMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="vieInstitutionnelles" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedVieInstitutionnelle"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des VieInstitutionnelles</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="tempsEstime">tempsEstime
+                                    <p-sortIcon field="tempsEstime"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="libelleInstance">libelleInstance
+                                    <p-sortIcon field="libelleInstance"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-vieInstitutionnelle>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="vieInstitutionnelle"></p-tableCheckbox>
+                            </td>
+                            <td>{{vieInstitutionnelle.id }}
+                            <td>{{vieInstitutionnelle.tempsEstime }}
+                            <td>{{vieInstitutionnelle.libelleInstance }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editVieInstitutionnelle(vieInstitutionnelle)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewVieInstitutionnelle(vieInstitutionnelle)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteVieInstitutionnelle(vieInstitutionnelle)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{vieInstitutionnelles ? vieInstitutionnelles.length == 1 ? 'is' : 'are' : 'is' }} {{vieInstitutionnelles ? vieInstitutionnelles.length : 0 }} {{vieInstitutionnelles ? vieInstitutionnelles.length == 1 ? 'vieInstitutionnelle' : 'vieInstitutionnelles' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-vieInstitutionnelle-create></app-vieInstitutionnelle-create>
+            <app-vieInstitutionnelle-edit></app-vieInstitutionnelle-edit>
+            <app-vieInstitutionnelle-view></app-vieInstitutionnelle-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

@@ -1,0 +1,51 @@
+<p-dialog [(visible)]="editEvenementColloqueScienntifiqueDialog" [style]="{width: '450px'}" header="EvenementColloqueScienntifique Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editEvenementColloqueScienntifiqueForm">
+    <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="1">tempsEstime</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="tempsEstime"  formControlName="tempsEstime"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="2">typeDeParticipation</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="typeDeParticipation" id="2" formControlName="typeDeParticipation" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="3">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="3" formControlName="intitule" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="4">periodeEvenementAnnee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="periodeEvenementAnnee"  formControlName="periodeEvenementAnnee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="5">periodeEvenementMois</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="5" placeholder="periodeEvenementMois"  formControlName="periodeEvenementMois"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="6">diplomatieScientifiques</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="diplomatieScientifiques"  formControlName="diplomatieScientifiques"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="7">volumeParticipant</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="7" placeholder="volumeParticipant"  formControlName="volumeParticipant"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="8">financementEvenement</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="financementEvenement" id="8" formControlName="financementEvenement" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="9">typeEvenement</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="typeEvenement" id="9" formControlName="typeEvenement" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="10">partIrd</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="partIrd" id="10" formControlName="partIrd" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,29 @@
+<p-dialog [(visible)]="viewBourseDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="ref">dateObtention</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText id="1" value="{{selectedBourse.dateObtention |
+                date:'dd.MM.yyyy'}}" required autofocus disabled />
+            </div>
+            <div class="p-field">
+                <label for="total">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedBourse.intitule" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">montant</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedBourse.montant" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">dureeEnMois</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedBourse.dureeEnMois" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

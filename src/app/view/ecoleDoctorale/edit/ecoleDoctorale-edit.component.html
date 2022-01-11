@@ -1,0 +1,19 @@
+<p-dialog [(visible)]="editEcoleDoctoraleDialog" [style]="{width: '450px'}" header="EcoleDoctorale Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editEcoleDoctoraleForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="1" formControlName="intitule" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="2">international</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="international"  formControlName="international"></p-inputNumber>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

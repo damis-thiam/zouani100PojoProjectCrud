@@ -1,0 +1,34 @@
+    <p-dialog [(visible)]="createFoireQuestionDialog" [style]="{width: '70vw'}" header="FoireQuestion Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="FoireQuestion">
+                        <div class="p-field">
+                            <label for="1">question</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="question" id="1" [(ngModel)]="selectedFoireQuestion.question" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">reponse</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="reponse" id="2" [(ngModel)]="selectedFoireQuestion.reponse" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="3">numeroOrdre</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="numeroOrdre"  [(ngModel)]="selectedFoireQuestion.numeroOrdre"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

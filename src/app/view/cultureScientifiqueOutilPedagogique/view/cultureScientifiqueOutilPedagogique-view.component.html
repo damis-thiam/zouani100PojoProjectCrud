@@ -1,0 +1,32 @@
+<p-dialog [(visible)]="viewCultureScientifiqueOutilPedagogiqueDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="total">role</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="1" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.role" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">nomOutil</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.nomOutil" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">sortieAnnee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.sortieAnnee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">sortieMois</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.sortieMois" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">lienWeb</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="5" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.lienWeb" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

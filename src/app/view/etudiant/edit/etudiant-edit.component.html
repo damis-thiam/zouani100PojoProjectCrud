@@ -1,0 +1,23 @@
+<p-dialog [(visible)]="editEtudiantDialog" [style]="{width: '450px'}" header="Etudiant Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editEtudiantForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">nom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nom" id="1" formControlName="nom" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="2">prenom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="prenom" id="2" formControlName="prenom" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="3">anneeNaissance</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="anneeNaissance"  formControlName="anneeNaissance"></p-inputNumber>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

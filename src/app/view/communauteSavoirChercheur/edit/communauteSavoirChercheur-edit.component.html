@@ -1,0 +1,15 @@
+<p-dialog [(visible)]="editCommunauteSavoirChercheurDialog" [style]="{width: '450px'}" header="CommunauteSavoirChercheur Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editCommunauteSavoirChercheurForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">communauteSavoir</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="communauteSavoir" id="1" formControlName="communauteSavoir" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

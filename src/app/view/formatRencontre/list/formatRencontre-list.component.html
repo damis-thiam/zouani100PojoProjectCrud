@@ -1,0 +1,93 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateFormatRencontre('formatrencontre')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                    <input class="p-mr-1" type="text" pInputText placeholder="code"
+                                            [(ngModel)]="searchFormatRencontre.code" autofocus/>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="formatRencontres" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedFormatRencontre"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des FormatRencontres</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="libelle">libelle
+                                    <p-sortIcon field="libelle"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="code">code
+                                    <p-sortIcon field="code"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-formatRencontre>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="formatRencontre"></p-tableCheckbox>
+                            </td>
+                            <td>{{formatRencontre.id }}
+                            <td>{{formatRencontre.libelle }}
+                            <td>{{formatRencontre.code }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editFormatRencontre(formatRencontre)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewFormatRencontre(formatRencontre)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteFormatRencontre(formatRencontre)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{formatRencontres ? formatRencontres.length == 1 ? 'is' : 'are' : 'is' }} {{formatRencontres ? formatRencontres.length : 0 }} {{formatRencontres ? formatRencontres.length == 1 ? 'formatRencontre' : 'formatRencontres' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-formatRencontre-create></app-formatRencontre-create>
+            <app-formatRencontre-edit></app-formatRencontre-edit>
+            <app-formatRencontre-view></app-formatRencontre-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

@@ -1,0 +1,16 @@
+<p-dialog [(visible)]="viewNiveauEtudeDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="total">libelle</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="1" [(ngModel)]="selectedNiveauEtude.libelle" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">code</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedNiveauEtude.code" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="viewDirectionEncadrementDoctorantDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">annee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedDirectionEncadrementDoctorant.annee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">tempsEstimePourCetteAnnne</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="2"  [(ngModel)]="selectedDirectionEncadrementDoctorant.tempsEstimePourCetteAnnne" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">sujetThese</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="3" [(ngModel)]="selectedDirectionEncadrementDoctorant.sujetThese" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="ref">dateDebutThese</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText id="1" value="{{selectedDirectionEncadrementDoctorant.dateDebutThese |
+                date:'dd.MM.yyyy'}}" required autofocus disabled />
+            </div>
+            <div class="p-field">
+                <label for="ref">datePrevuSoutenanceThese</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText id="1" value="{{selectedDirectionEncadrementDoctorant.datePrevuSoutenanceThese |
+                date:'dd.MM.yyyy'}}" required autofocus disabled />
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">codirectionInternationale</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="6"  [(ngModel)]="selectedDirectionEncadrementDoctorant.codirectionInternationale" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">intituleEd</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="7" [(ngModel)]="selectedDirectionEncadrementDoctorant.intituleEd" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">numeroEd</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="8" [(ngModel)]="selectedDirectionEncadrementDoctorant.numeroEd" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

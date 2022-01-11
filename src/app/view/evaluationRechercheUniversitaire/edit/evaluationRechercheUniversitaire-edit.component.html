@@ -1,0 +1,23 @@
+<p-dialog [(visible)]="editEvaluationRechercheUniversitaireDialog" [style]="{width: '450px'}" header="EvaluationRechercheUniversitaire Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editEvaluationRechercheUniversitaireForm">
+    <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="1">annee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  formControlName="annee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="2">nombreJourConsacrePourCetteAnnee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="nombreJourConsacrePourCetteAnnee"  formControlName="nombreJourConsacrePourCetteAnnee"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="3">commentaire</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="commentaire" id="3" formControlName="commentaire" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

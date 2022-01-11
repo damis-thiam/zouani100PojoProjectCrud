@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="editProjetActiviteRechercheDialog" [style]="{width: '450px'}" header="ProjetActiviteRecherche Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editProjetActiviteRechercheForm">
+    <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="1">annee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  formControlName="annee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="2">tempsEstimePourCetteAnnne</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  formControlName="tempsEstimePourCetteAnnne"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="3">IntituleSujetReponse</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="IntituleSujetReponse" id="3" formControlName="IntituleSujetReponse" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="4">dureeFinancementPrevuEnMois</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="dureeFinancementPrevuEnMois"  formControlName="dureeFinancementPrevuEnMois"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="5">montantFinancementPrevu</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="5" placeholder="montantFinancementPrevu"  formControlName="montantFinancementPrevu"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="6">dureeFinancementAccordeEnMois</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="dureeFinancementAccordeEnMois"  formControlName="dureeFinancementAccordeEnMois"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="7">montantFinancementAccorde</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="7" placeholder="montantFinancementAccorde"  formControlName="montantFinancementAccorde"></p-inputNumber>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

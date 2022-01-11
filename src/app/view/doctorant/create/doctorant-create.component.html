@@ -1,0 +1,34 @@
+    <p-dialog [(visible)]="createDoctorantDialog" [style]="{width: '70vw'}" header="Doctorant Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="Doctorant">
+                        <div class="p-field">
+                            <label for="1">nom</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nom" id="1" [(ngModel)]="selectedDoctorant.nom" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">prenom</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="prenom" id="2" [(ngModel)]="selectedDoctorant.prenom" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="3">anneeNaissance</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="anneeNaissance"  [(ngModel)]="selectedDoctorant.anneeNaissance"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

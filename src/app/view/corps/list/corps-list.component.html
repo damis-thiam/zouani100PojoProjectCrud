@@ -1,0 +1,97 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateCorps('corps')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                    <input class="p-mr-1" type="text" pInputText placeholder="code"
+                                            [(ngModel)]="searchCorps.code" autofocus/>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="corpss" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedCorps"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des Corpss</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="libelle">libelle
+                                    <p-sortIcon field="libelle"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="code">code
+                                    <p-sortIcon field="code"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="description">description
+                                    <p-sortIcon field="description"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-corps>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="corps"></p-tableCheckbox>
+                            </td>
+                            <td>{{corps.id }}
+                            <td>{{corps.libelle }}
+                            <td>{{corps.code }}
+                            <td>{{corps.description }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editCorps(corps)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewCorps(corps)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteCorps(corps)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{corpss ? corpss.length == 1 ? 'is' : 'are' : 'is' }} {{corpss ? corpss.length : 0 }} {{corpss ? corpss.length == 1 ? 'corps' : 'corpss' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-corps-create></app-corps-create>
+            <app-corps-edit></app-corps-edit>
+            <app-corps-view></app-corps-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

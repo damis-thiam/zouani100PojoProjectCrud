@@ -1,0 +1,134 @@
+    <p-dialog [(visible)]="createFormationContinueDialog" [style]="{width: '70vw'}" header="FormationContinue Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="FormationContinue">
+                            <div class="p-field">
+                                <label for="1">annee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedFormationContinue.annee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="2">tempsEstimePourCetteAnnne</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedFormationContinue.tempsEstimePourCetteAnnne"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="3">intituleExact</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intituleExact" id="3" [(ngModel)]="selectedFormationContinue.intituleExact" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="4">nombreHeuresDispenseesDansAnnee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="nombreHeuresDispenseesDansAnnee"  [(ngModel)]="selectedFormationContinue.nombreHeuresDispenseesDansAnnee"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+                    <p-tabPanel header="ObjetGlobalDeFormationContinue">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>objetGlobal</label>
+                                    <p-dropdown [options]="myobjetGlobalsRef" [(ngModel)]="selectedObjetGlobalDeFormationContinue.objetGlobalVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addObjetGlobalDeFormationContinue()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="objetGlobalDeFormationContinueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>objetGlobal reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.objetGlobalVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteObjetGlobalDeFormationContinue(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="PubliquePrincipalConcemeFormationContinue">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>publiquePrincipal</label>
+                                    <p-dropdown [options]="mypubliquePrincipalsRef" [(ngModel)]="selectedPubliquePrincipalConcemeFormationContinue.publiquePrincipalVo.id" placeholder="Select" optionLabel="id" optionValue="id" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addPubliquePrincipalConcemeFormationContinue()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="publiquePrincipalConcemeFormationContinueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>publiquePrincipal id</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.publiquePrincipalVo?.id}}</td>
+                                        <td>
+                                            <button (click)="deletePubliquePrincipalConcemeFormationContinue(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="PaysFormationContinue">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>paysNationnalite</label>
+                                    <p-dropdown [options]="mypaysNationnalitesRef" [(ngModel)]="selectedPaysFormationContinue.paysNationnaliteVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addPaysFormationContinue()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="paysFormationContinueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>paysNationnalite reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.paysNationnaliteVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deletePaysFormationContinue(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

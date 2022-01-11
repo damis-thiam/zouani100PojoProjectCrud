@@ -1,0 +1,137 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateDirectionEncadrementDoctorant('directionencadrementdoctorant')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                    <input class="p-mr-1" type="text" pInputText placeholder="annee"
+                                            [(ngModel)]="searchDirectionEncadrementDoctorant.annee" autofocus/>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="anneeMin" [(ngModel)]="searchDirectionEncadrementDoctorant.anneeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="anneeMax" [(ngModel)]="searchDirectionEncadrementDoctorant.anneeMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimePourCetteAnnneMin" [(ngModel)]="searchDirectionEncadrementDoctorant.tempsEstimePourCetteAnnneMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimePourCetteAnnneMax" [(ngModel)]="searchDirectionEncadrementDoctorant.tempsEstimePourCetteAnnneMax"></p-inputNumber>
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMin" [(ngModel)]="searchDirectionEncadrementDoctorantMin"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMax" [(ngModel)]="searchDirectionEncadrementDoctorantMax"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMin" [(ngModel)]="searchDirectionEncadrementDoctorantMin"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMax" [(ngModel)]="searchDirectionEncadrementDoctorantMax"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="directionEncadrementDoctorants" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedDirectionEncadrementDoctorant"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des DirectionEncadrementDoctorants</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="annee">annee
+                                    <p-sortIcon field="annee"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="tempsEstimePourCetteAnnne">tempsEstimePourCetteAnnne
+                                    <p-sortIcon field="tempsEstimePourCetteAnnne"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="sujetThese">sujetThese
+                                    <p-sortIcon field="sujetThese"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="dateDebutThese">dateDebutThese
+                                    <p-sortIcon field="dateDebutThese"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="datePrevuSoutenanceThese">datePrevuSoutenanceThese
+                                    <p-sortIcon field="datePrevuSoutenanceThese"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="codirectionInternationale">codirectionInternationale
+                                    <p-sortIcon field="codirectionInternationale"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="intituleEd">intituleEd
+                                    <p-sortIcon field="intituleEd"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="numeroEd">numeroEd
+                                    <p-sortIcon field="numeroEd"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-directionEncadrementDoctorant>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="directionEncadrementDoctorant"></p-tableCheckbox>
+                            </td>
+                            <td>{{directionEncadrementDoctorant.id }}
+                            <td>{{directionEncadrementDoctorant.annee }}
+                            <td>{{directionEncadrementDoctorant.tempsEstimePourCetteAnnne }}
+                            <td>{{directionEncadrementDoctorant.sujetThese }}
+                            <td>{{directionEncadrementDoctorant.dateDebutThese | date:'dd/MM/yyyy' }}</td>
+                            <td>{{directionEncadrementDoctorant.datePrevuSoutenanceThese | date:'dd/MM/yyyy' }}</td>
+                            <td>{{directionEncadrementDoctorant.codirectionInternationale }}
+                            <td>{{directionEncadrementDoctorant.intituleEd }}
+                            <td>{{directionEncadrementDoctorant.numeroEd }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editDirectionEncadrementDoctorant(directionEncadrementDoctorant)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewDirectionEncadrementDoctorant(directionEncadrementDoctorant)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteDirectionEncadrementDoctorant(directionEncadrementDoctorant)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{directionEncadrementDoctorants ? directionEncadrementDoctorants.length == 1 ? 'is' : 'are' : 'is' }} {{directionEncadrementDoctorants ? directionEncadrementDoctorants.length : 0 }} {{directionEncadrementDoctorants ? directionEncadrementDoctorants.length == 1 ? 'directionEncadrementDoctorant' : 'directionEncadrementDoctorants' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-directionEncadrementDoctorant-create></app-directionEncadrementDoctorant-create>
+            <app-directionEncadrementDoctorant-edit></app-directionEncadrementDoctorant-edit>
+            <app-directionEncadrementDoctorant-view></app-directionEncadrementDoctorant-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

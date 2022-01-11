@@ -1,0 +1,15 @@
+<p-dialog [(visible)]="editZoneActiviteInteractionRechercheDialog" [style]="{width: '450px'}" header="ZoneActiviteInteractionRecherche Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editZoneActiviteInteractionRechercheForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">pays</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="pays" id="1" formControlName="pays" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

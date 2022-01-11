@@ -1,0 +1,32 @@
+<p-dialog [(visible)]="viewResponsabilitePedagogiqueEcoleDoctoraleDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">annee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.annee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">tempsEstimePourCetteAnnne</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="2"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.tempsEstimePourCetteAnnne" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">appelServiceRenforcementCapaciteSud</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.appelServiceRenforcementCapaciteSud" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">ecoleDoctoraleInternational</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.ecoleDoctoraleInternational" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

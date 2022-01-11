@@ -1,0 +1,105 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateEvaluationRechercheUniversitaire('evaluationrechercheuniversitaire')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                    <input class="p-mr-1" type="text" pInputText placeholder="annee"
+                                            [(ngModel)]="searchEvaluationRechercheUniversitaire.annee" autofocus/>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="anneeMin" [(ngModel)]="searchEvaluationRechercheUniversitaire.anneeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="anneeMax" [(ngModel)]="searchEvaluationRechercheUniversitaire.anneeMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="nombreJourConsacrePourCetteAnneeMin" [(ngModel)]="searchEvaluationRechercheUniversitaire.nombreJourConsacrePourCetteAnneeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="nombreJourConsacrePourCetteAnneeMax" [(ngModel)]="searchEvaluationRechercheUniversitaire.nombreJourConsacrePourCetteAnneeMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="evaluationRechercheUniversitaires" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedEvaluationRechercheUniversitaire"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des EvaluationRechercheUniversitaires</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="annee">annee
+                                    <p-sortIcon field="annee"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="nombreJourConsacrePourCetteAnnee">nombreJourConsacrePourCetteAnnee
+                                    <p-sortIcon field="nombreJourConsacrePourCetteAnnee"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="commentaire">commentaire
+                                    <p-sortIcon field="commentaire"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-evaluationRechercheUniversitaire>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="evaluationRechercheUniversitaire"></p-tableCheckbox>
+                            </td>
+                            <td>{{evaluationRechercheUniversitaire.id }}
+                            <td>{{evaluationRechercheUniversitaire.annee }}
+                            <td>{{evaluationRechercheUniversitaire.nombreJourConsacrePourCetteAnnee }}
+                            <td>{{evaluationRechercheUniversitaire.commentaire }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editEvaluationRechercheUniversitaire(evaluationRechercheUniversitaire)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewEvaluationRechercheUniversitaire(evaluationRechercheUniversitaire)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteEvaluationRechercheUniversitaire(evaluationRechercheUniversitaire)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{evaluationRechercheUniversitaires ? evaluationRechercheUniversitaires.length == 1 ? 'is' : 'are' : 'is' }} {{evaluationRechercheUniversitaires ? evaluationRechercheUniversitaires.length : 0 }} {{evaluationRechercheUniversitaires ? evaluationRechercheUniversitaires.length == 1 ? 'evaluationRechercheUniversitaire' : 'evaluationRechercheUniversitaires' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-evaluationRechercheUniversitaire-create></app-evaluationRechercheUniversitaire-create>
+            <app-evaluationRechercheUniversitaire-edit></app-evaluationRechercheUniversitaire-edit>
+            <app-evaluationRechercheUniversitaire-view></app-evaluationRechercheUniversitaire-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

@@ -1,0 +1,127 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateCultureScientifiqueRecontreGrandPublicJeunePublic('culturescientifiquerecontregrandpublicjeunepublic')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimePourCetteAnnneMin" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.tempsEstimePourCetteAnnneMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="tempsEstimePourCetteAnnneMax" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.tempsEstimePourCetteAnnneMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="periodeAnneeMin" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.periodeAnneeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="periodeAnneeMax" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.periodeAnneeMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="periodeMoisMin" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.periodeMoisMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="periodeMoisMax" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.periodeMoisMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="volumePublicMin" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.volumePublicMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="volumePublicMax" [(ngModel)]="searchCultureScientifiqueRecontreGrandPublicJeunePublic.volumePublicMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="cultureScientifiqueRecontreGrandPublicJeunePublics" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des CultureScientifiqueRecontreGrandPublicJeunePublics</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="tempsEstimePourCetteAnnne">tempsEstimePourCetteAnnne
+                                    <p-sortIcon field="tempsEstimePourCetteAnnne"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="intituleSujet">intituleSujet
+                                    <p-sortIcon field="intituleSujet"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="periodeAnnee">periodeAnnee
+                                    <p-sortIcon field="periodeAnnee"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="periodeMois">periodeMois
+                                    <p-sortIcon field="periodeMois"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="evenementGrandPublic">evenementGrandPublic
+                                    <p-sortIcon field="evenementGrandPublic"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="volumePublic">volumePublic
+                                    <p-sortIcon field="volumePublic"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="lienWeb">lienWeb
+                                    <p-sortIcon field="lienWeb"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-cultureScientifiqueRecontreGrandPublicJeunePublic>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="cultureScientifiqueRecontreGrandPublicJeunePublic"></p-tableCheckbox>
+                            </td>
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.id }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.tempsEstimePourCetteAnnne }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.intituleSujet }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.periodeAnnee }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.periodeMois }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.evenementGrandPublic }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.volumePublic }}
+                            <td>{{cultureScientifiqueRecontreGrandPublicJeunePublic.lienWeb }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editCultureScientifiqueRecontreGrandPublicJeunePublic(cultureScientifiqueRecontreGrandPublicJeunePublic)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewCultureScientifiqueRecontreGrandPublicJeunePublic(cultureScientifiqueRecontreGrandPublicJeunePublic)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteCultureScientifiqueRecontreGrandPublicJeunePublic(cultureScientifiqueRecontreGrandPublicJeunePublic)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{cultureScientifiqueRecontreGrandPublicJeunePublics ? cultureScientifiqueRecontreGrandPublicJeunePublics.length == 1 ? 'is' : 'are' : 'is' }} {{cultureScientifiqueRecontreGrandPublicJeunePublics ? cultureScientifiqueRecontreGrandPublicJeunePublics.length : 0 }} {{cultureScientifiqueRecontreGrandPublicJeunePublics ? cultureScientifiqueRecontreGrandPublicJeunePublics.length == 1 ? 'cultureScientifiqueRecontreGrandPublicJeunePublic' : 'cultureScientifiqueRecontreGrandPublicJeunePublics' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-cultureScientifiqueRecontreGrandPublicJeunePublic-create></app-cultureScientifiqueRecontreGrandPublicJeunePublic-create>
+            <app-cultureScientifiqueRecontreGrandPublicJeunePublic-edit></app-cultureScientifiqueRecontreGrandPublicJeunePublic-edit>
+            <app-cultureScientifiqueRecontreGrandPublicJeunePublic-view></app-cultureScientifiqueRecontreGrandPublicJeunePublic-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

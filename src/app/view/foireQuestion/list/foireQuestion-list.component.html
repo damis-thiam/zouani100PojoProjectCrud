@@ -1,0 +1,99 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateFoireQuestion('foirequestion')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="numeroOrdreMin" [(ngModel)]="searchFoireQuestion.numeroOrdreMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="numeroOrdreMax" [(ngModel)]="searchFoireQuestion.numeroOrdreMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="foireQuestions" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedFoireQuestion"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des FoireQuestions</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="question">question
+                                    <p-sortIcon field="question"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="reponse">reponse
+                                    <p-sortIcon field="reponse"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="numeroOrdre">numeroOrdre
+                                    <p-sortIcon field="numeroOrdre"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-foireQuestion>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="foireQuestion"></p-tableCheckbox>
+                            </td>
+                            <td>{{foireQuestion.id }}
+                            <td>{{foireQuestion.question }}
+                            <td>{{foireQuestion.reponse }}
+                            <td>{{foireQuestion.numeroOrdre }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editFoireQuestion(foireQuestion)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewFoireQuestion(foireQuestion)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteFoireQuestion(foireQuestion)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{foireQuestions ? foireQuestions.length == 1 ? 'is' : 'are' : 'is' }} {{foireQuestions ? foireQuestions.length : 0 }} {{foireQuestions ? foireQuestions.length == 1 ? 'foireQuestion' : 'foireQuestions' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-foireQuestion-create></app-foireQuestion-create>
+            <app-foireQuestion-edit></app-foireQuestion-edit>
+            <app-foireQuestion-view></app-foireQuestion-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

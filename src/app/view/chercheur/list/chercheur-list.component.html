@@ -1,0 +1,119 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateChercheur('chercheur')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="chercheurs" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedChercheur"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des Chercheurs</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="numeroMatricule">numeroMatricule
+                                    <p-sortIcon field="numeroMatricule"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="email">email
+                                    <p-sortIcon field="email"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="nom">nom
+                                    <p-sortIcon field="nom"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="prenom">prenom
+                                    <p-sortIcon field="prenom"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="affectationGeographiquePays">affectationGeographiquePays
+                                    <p-sortIcon field="affectationGeographiquePays"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="affectationGeographiqueVille">affectationGeographiqueVille
+                                    <p-sortIcon field="affectationGeographiqueVille"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="natureImplication">natureImplication
+                                    <p-sortIcon field="natureImplication"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="resume">resume
+                                    <p-sortIcon field="resume"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="formationEnManagement">formationEnManagement
+                                    <p-sortIcon field="formationEnManagement"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-chercheur>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="chercheur"></p-tableCheckbox>
+                            </td>
+                            <td>{{chercheur.id }}
+                            <td>{{chercheur.numeroMatricule }}
+                            <td>{{chercheur.email }}
+                            <td>{{chercheur.nom }}
+                            <td>{{chercheur.prenom }}
+                            <td>{{chercheur.affectationGeographiquePays }}
+                            <td>{{chercheur.affectationGeographiqueVille }}
+                            <td>{{chercheur.natureImplication }}
+                            <td>{{chercheur.resume }}
+                            <td>{{chercheur.formationEnManagement }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editChercheur(chercheur)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewChercheur(chercheur)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteChercheur(chercheur)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{chercheurs ? chercheurs.length == 1 ? 'is' : 'are' : 'is' }} {{chercheurs ? chercheurs.length : 0 }} {{chercheurs ? chercheurs.length == 1 ? 'chercheur' : 'chercheurs' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-chercheur-create></app-chercheur-create>
+            <app-chercheur-edit></app-chercheur-edit>
+            <app-chercheur-view></app-chercheur-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

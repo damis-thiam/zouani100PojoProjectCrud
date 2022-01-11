@@ -1,0 +1,442 @@
+    <p-dialog [(visible)]="createProjetActiviteRechercheDialog" [style]="{width: '70vw'}" header="ProjetActiviteRecherche Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="ProjetActiviteRecherche">
+                            <div class="p-field">
+                                <label for="1">annee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedProjetActiviteRecherche.annee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="2">tempsEstimePourCetteAnnne</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedProjetActiviteRecherche.tempsEstimePourCetteAnnne"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="3">IntituleSujetReponse</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="IntituleSujetReponse" id="3" [(ngModel)]="selectedProjetActiviteRecherche.IntituleSujetReponse" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="4">dureeFinancementPrevuEnMois</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="dureeFinancementPrevuEnMois"  [(ngModel)]="selectedProjetActiviteRecherche.dureeFinancementPrevuEnMois"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="5">montantFinancementPrevu</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="5" placeholder="montantFinancementPrevu"  [(ngModel)]="selectedProjetActiviteRecherche.montantFinancementPrevu"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="6">dureeFinancementAccordeEnMois</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="dureeFinancementAccordeEnMois"  [(ngModel)]="selectedProjetActiviteRecherche.dureeFinancementAccordeEnMois"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="7">montantFinancementAccorde</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="7" placeholder="montantFinancementAccorde"  [(ngModel)]="selectedProjetActiviteRecherche.montantFinancementAccorde"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+                    <p-tabPanel header="PaysProjetRecherche">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>pays</label>
+                                    <p-dropdown [options]="mypayssRef" [(ngModel)]="selectedPaysProjetRecherche.paysVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addPaysProjetRecherche()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="paysProjetRechercheListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>pays reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.paysVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deletePaysProjetRecherche(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="InstitutionCoContractantProjetActiviteRecherche">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>institutionCoContractant</label>
+                                    <p-dropdown [options]="myinstitutionCoContractantsRef" [(ngModel)]="selectedInstitutionCoContractantProjetActiviteRecherche.institutionCoContractantVo.id" placeholder="Select" optionLabel="id" optionValue="id" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addInstitutionCoContractantProjetActiviteRecherche()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="institutionCoContractantProjetActiviteRechercheListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>institutionCoContractant id</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.institutionCoContractantVo?.id}}</td>
+                                        <td>
+                                            <button (click)="deleteInstitutionCoContractantProjetActiviteRecherche(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="CommunauteSavoirProjetActiviteRecherche">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>communauteSavoir</label>
+                                    <p-dropdown [options]="mycommunauteSavoirsRef" [(ngModel)]="selectedCommunauteSavoirProjetActiviteRecherche.communauteSavoirVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addCommunauteSavoirProjetActiviteRecherche()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="communauteSavoirProjetActiviteRechercheListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>communauteSavoir reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.communauteSavoirVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteCommunauteSavoirProjetActiviteRecherche(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="InstrumentsEtDispositifsIrdProjetActiviteRecherche">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>instrumentsEtDispositifsIrd</label>
+                                    <p-dropdown [options]="myinstrumentsEtDispositifsIrdsRef" [(ngModel)]="selectedInstrumentsEtDispositifsIrdProjetActiviteRecherche.instrumentsEtDispositifsIrdVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addInstrumentsEtDispositifsIrdProjetActiviteRecherche()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="instrumentsEtDispositifsIrdProjetActiviteRechercheListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>instrumentsEtDispositifsIrd reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.instrumentsEtDispositifsIrdVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteInstrumentsEtDispositifsIrdProjetActiviteRecherche(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="Bourse">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                    <div class="p-field">
+                                        <label for="1">dateObtention</label>
+                                        <p-calendar  id="1" placeholder="dateObtention"  [(ngModel)]="selectedBourse.dateObtention" dateFormat="yy-mm-dd"></p-calendar>
+                                    </div>
+                                    <div class="p-field">
+                                        <label for="2">intitule</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="2" [(ngModel)]="selectedBourse.intitule" required autofocus />
+                                    </div>
+
+                                        <div class="p-field">
+                                            <label for="3">montant</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="montant"  [(ngModel)]="selectedBourse.montant"></p-inputNumber>
+                                        </div>
+                                        <div class="p-field">
+                                            <label for="4">dureeEnMois</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="dureeEnMois"  [(ngModel)]="selectedBourse.dureeEnMois"></p-inputNumber>
+                                        </div>
+                            <div class="row" >
+                                <label>typeParticipation</label>
+                                    <p-dropdown [options]="mytypeParticipationsRef" [(ngModel)]="selectedBourse.typeParticipationVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addBourse()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="bourseListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>dateObtention</th>
+                                                    <th>intitule</th>
+                                                        <th>typeParticipation reference</th>
+                                                    <th>montant</th>
+                                                    <th>dureeEnMois</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.dateObtention}}</td>
+                                                <td>{{p.intitule}}</td>
+                                                        <td>{{p.typeParticipationVo?.code}}</td>
+                                                <td>{{p.montant}}</td>
+                                                <td>{{p.dureeEnMois}}</td>
+                                        <td>
+                                            <button (click)="deleteBourse(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="EncadrementEtudiant">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                        <div class="p-field">
+                                            <label for="1">annee</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedEncadrementEtudiant.annee"></p-inputNumber>
+                                        </div>
+                                        <div class="p-field">
+                                            <label for="2">tempsEstimePourCetteAnnne</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedEncadrementEtudiant.tempsEstimePourCetteAnnne"></p-inputNumber>
+                                        </div>
+                                    <div class="p-field">
+                                        <label for="3">sujetEtude</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="sujetEtude" id="3" [(ngModel)]="selectedEncadrementEtudiant.sujetEtude" required autofocus />
+                                    </div>
+
+                                        <div class="p-field">
+                                            <label for="4">codirectionInternationale</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="codirectionInternationale"  [(ngModel)]="selectedEncadrementEtudiant.codirectionInternationale"></p-inputNumber>
+                                        </div>
+                                    <div class="p-field">
+                                        <label for="5">cursus</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="cursus" id="5" [(ngModel)]="selectedEncadrementEtudiant.cursus" required autofocus />
+                                    </div>
+
+                            <div class="row" >
+                                <label>etudiant</label>
+                                    <p-dropdown [options]="myetudiantsRef" [(ngModel)]="selectedEncadrementEtudiant.etudiantVo.id" placeholder="Select" optionLabel="id" optionValue="id" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>responsabiliteEncadrementEtudiant</label>
+                                    <p-dropdown [options]="myresponsabiliteEncadrementEtudiantsRef" [(ngModel)]="selectedEncadrementEtudiant.responsabiliteEncadrementEtudiantVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>paysInscription</label>
+                                    <p-dropdown [options]="mypaysInscriptionsRef" [(ngModel)]="selectedEncadrementEtudiant.paysInscriptionVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>etablissementPartenaire</label>
+                                    <p-dropdown [options]="myetablissementPartenairesRef" [(ngModel)]="selectedEncadrementEtudiant.etablissementPartenaireVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>etablissementInscription</label>
+                                    <p-dropdown [options]="myetablissementInscriptionsRef" [(ngModel)]="selectedEncadrementEtudiant.etablissementInscriptionVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>evaluationEncadrement</label>
+                                    <p-dropdown [options]="myevaluationEncadrementsRef" [(ngModel)]="selectedEncadrementEtudiant.evaluationEncadrementVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addEncadrementEtudiant()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="encadrementEtudiantListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>annee</th>
+                                                    <th>tempsEstimePourCetteAnnne</th>
+                                                    <th>sujetEtude</th>
+                                                        <th>etudiant id</th>
+                                                        <th>responsabiliteEncadrementEtudiant reference</th>
+                                                        <th>paysInscription reference</th>
+                                                        <th>etablissementPartenaire reference</th>
+                                                        <th>etablissementInscription reference</th>
+                                                    <th>codirectionInternationale</th>
+                                                        <th>evaluationEncadrement reference</th>
+                                                    <th>cursus</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.annee}}</td>
+                                                <td>{{p.tempsEstimePourCetteAnnne}}</td>
+                                                <td>{{p.sujetEtude}}</td>
+                                                        <td>{{p.etudiantVo?.id}}</td>
+                                                        <td>{{p.responsabiliteEncadrementEtudiantVo?.code}}</td>
+                                                        <td>{{p.paysInscriptionVo?.code}}</td>
+                                                        <td>{{p.etablissementPartenaireVo?.code}}</td>
+                                                        <td>{{p.etablissementInscriptionVo?.code}}</td>
+                                                <td>{{p.codirectionInternationale}}</td>
+                                                        <td>{{p.evaluationEncadrementVo?.code}}</td>
+                                                <td>{{p.cursus}}</td>
+                                        <td>
+                                            <button (click)="deleteEncadrementEtudiant(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="DirectionEncadrementDoctorant">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                        <div class="p-field">
+                                            <label for="1">annee</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedDirectionEncadrementDoctorant.annee"></p-inputNumber>
+                                        </div>
+                                        <div class="p-field">
+                                            <label for="2">tempsEstimePourCetteAnnne</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedDirectionEncadrementDoctorant.tempsEstimePourCetteAnnne"></p-inputNumber>
+                                        </div>
+                                    <div class="p-field">
+                                        <label for="3">sujetThese</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="sujetThese" id="3" [(ngModel)]="selectedDirectionEncadrementDoctorant.sujetThese" required autofocus />
+                                    </div>
+
+                                    <div class="p-field">
+                                        <label for="4">dateDebutThese</label>
+                                        <p-calendar  id="4" placeholder="dateDebutThese"  [(ngModel)]="selectedDirectionEncadrementDoctorant.dateDebutThese" dateFormat="yy-mm-dd"></p-calendar>
+                                    </div>
+                                    <div class="p-field">
+                                        <label for="5">datePrevuSoutenanceThese</label>
+                                        <p-calendar  id="5" placeholder="datePrevuSoutenanceThese"  [(ngModel)]="selectedDirectionEncadrementDoctorant.datePrevuSoutenanceThese" dateFormat="yy-mm-dd"></p-calendar>
+                                    </div>
+                                        <div class="p-field">
+                                            <label for="6">codirectionInternationale</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="codirectionInternationale"  [(ngModel)]="selectedDirectionEncadrementDoctorant.codirectionInternationale"></p-inputNumber>
+                                        </div>
+                                    <div class="p-field">
+                                        <label for="7">intituleEd</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intituleEd" id="7" [(ngModel)]="selectedDirectionEncadrementDoctorant.intituleEd" required autofocus />
+                                    </div>
+
+                                    <div class="p-field">
+                                        <label for="8">numeroEd</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="numeroEd" id="8" [(ngModel)]="selectedDirectionEncadrementDoctorant.numeroEd" required autofocus />
+                                    </div>
+
+                            <div class="row" >
+                                <label>doctorant</label>
+                                    <p-dropdown [options]="mydoctorantsRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.doctorantVo.id" placeholder="Select" optionLabel="id" optionValue="id" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>responsabilite</label>
+                                    <p-dropdown [options]="myresponsabilitesRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.responsabiliteVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>financementDoctorant</label>
+                                    <p-dropdown [options]="myfinancementDoctorantsRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.financementDoctorantVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>directeurThese</label>
+                                    <p-dropdown [options]="mydirecteurThesesRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.directeurTheseVo.id" placeholder="Select" optionLabel="id" optionValue="id" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>paysEtablissementInscriptionDoctorant</label>
+                                    <p-dropdown [options]="mypaysEtablissementInscriptionDoctorantsRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.paysEtablissementInscriptionDoctorantVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>etablissementInscription</label>
+                                    <p-dropdown [options]="myetablissementInscriptionsRef" [(ngModel)]="selectedDirectionEncadrementDoctorant.etablissementInscriptionVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addDirectionEncadrementDoctorant()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="directionEncadrementDoctorantListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>annee</th>
+                                                    <th>tempsEstimePourCetteAnnne</th>
+                                                    <th>sujetThese</th>
+                                                        <th>doctorant id</th>
+                                                        <th>responsabilite reference</th>
+                                                    <th>dateDebutThese</th>
+                                                    <th>datePrevuSoutenanceThese</th>
+                                                        <th>financementDoctorant reference</th>
+                                                        <th>directeurThese id</th>
+                                                    <th>codirectionInternationale</th>
+                                                        <th>paysEtablissementInscriptionDoctorant reference</th>
+                                                        <th>etablissementInscription reference</th>
+                                                    <th>intituleEd</th>
+                                                    <th>numeroEd</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.annee}}</td>
+                                                <td>{{p.tempsEstimePourCetteAnnne}}</td>
+                                                <td>{{p.sujetThese}}</td>
+                                                        <td>{{p.doctorantVo?.id}}</td>
+                                                        <td>{{p.responsabiliteVo?.code}}</td>
+                                                <td>{{p.dateDebutThese}}</td>
+                                                <td>{{p.datePrevuSoutenanceThese}}</td>
+                                                        <td>{{p.financementDoctorantVo?.code}}</td>
+                                                        <td>{{p.directeurTheseVo?.id}}</td>
+                                                <td>{{p.codirectionInternationale}}</td>
+                                                        <td>{{p.paysEtablissementInscriptionDoctorantVo?.code}}</td>
+                                                        <td>{{p.etablissementInscriptionVo?.code}}</td>
+                                                <td>{{p.intituleEd}}</td>
+                                                <td>{{p.numeroEd}}</td>
+                                        <td>
+                                            <button (click)="deleteDirectionEncadrementDoctorant(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

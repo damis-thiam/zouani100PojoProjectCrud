@@ -1,0 +1,111 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateCultureScientifiqueOutilPedagogique('culturescientifiqueoutilpedagogique')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="sortieAnneeMin" [(ngModel)]="searchCultureScientifiqueOutilPedagogique.sortieAnneeMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="sortieAnneeMax" [(ngModel)]="searchCultureScientifiqueOutilPedagogique.sortieAnneeMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="sortieMoisMin" [(ngModel)]="searchCultureScientifiqueOutilPedagogique.sortieMoisMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="sortieMoisMax" [(ngModel)]="searchCultureScientifiqueOutilPedagogique.sortieMoisMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="cultureScientifiqueOutilPedagogiques" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedCultureScientifiqueOutilPedagogique"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des CultureScientifiqueOutilPedagogiques</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="role">role
+                                    <p-sortIcon field="role"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="nomOutil">nomOutil
+                                    <p-sortIcon field="nomOutil"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="sortieAnnee">sortieAnnee
+                                    <p-sortIcon field="sortieAnnee"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="sortieMois">sortieMois
+                                    <p-sortIcon field="sortieMois"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="lienWeb">lienWeb
+                                    <p-sortIcon field="lienWeb"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-cultureScientifiqueOutilPedagogique>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="cultureScientifiqueOutilPedagogique"></p-tableCheckbox>
+                            </td>
+                            <td>{{cultureScientifiqueOutilPedagogique.id }}
+                            <td>{{cultureScientifiqueOutilPedagogique.role }}
+                            <td>{{cultureScientifiqueOutilPedagogique.nomOutil }}
+                            <td>{{cultureScientifiqueOutilPedagogique.sortieAnnee }}
+                            <td>{{cultureScientifiqueOutilPedagogique.sortieMois }}
+                            <td>{{cultureScientifiqueOutilPedagogique.lienWeb }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editCultureScientifiqueOutilPedagogique(cultureScientifiqueOutilPedagogique)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewCultureScientifiqueOutilPedagogique(cultureScientifiqueOutilPedagogique)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteCultureScientifiqueOutilPedagogique(cultureScientifiqueOutilPedagogique)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{cultureScientifiqueOutilPedagogiques ? cultureScientifiqueOutilPedagogiques.length == 1 ? 'is' : 'are' : 'is' }} {{cultureScientifiqueOutilPedagogiques ? cultureScientifiqueOutilPedagogiques.length : 0 }} {{cultureScientifiqueOutilPedagogiques ? cultureScientifiqueOutilPedagogiques.length == 1 ? 'cultureScientifiqueOutilPedagogique' : 'cultureScientifiqueOutilPedagogiques' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-cultureScientifiqueOutilPedagogique-create></app-cultureScientifiqueOutilPedagogique-create>
+            <app-cultureScientifiqueOutilPedagogique-edit></app-cultureScientifiqueOutilPedagogique-edit>
+            <app-cultureScientifiqueOutilPedagogique-view></app-cultureScientifiqueOutilPedagogique-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

@@ -1,0 +1,31 @@
+<p-dialog [(visible)]="editDeveloppementDeSavoirEtInnovationScientifiqueDialog" [style]="{width: '450px'}" header="DeveloppementDeSavoirEtInnovationScientifique Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editDeveloppementDeSavoirEtInnovationScientifiqueForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">titreInstrument</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="titreInstrument" id="1" formControlName="titreInstrument" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="2">role</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="role" id="2" formControlName="role" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="3">anneeMiseEnOeuvre</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="anneeMiseEnOeuvre"  formControlName="anneeMiseEnOeuvre"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="4">codeveloppeurs</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="codeveloppeurs" id="4" formControlName="codeveloppeurs" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="5">lienWeb</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="lienWeb" id="5" formControlName="lienWeb" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

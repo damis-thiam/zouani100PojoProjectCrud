@@ -1,0 +1,38 @@
+    <p-dialog [(visible)]="createBourseDialog" [style]="{width: '70vw'}" header="Bourse Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="Bourse">
+                        <div class="p-field">
+                            <label for="1">dateObtention</label>
+                            <p-calendar  id="1" placeholder="dateObtention"  [(ngModel)]="selectedBourse.dateObtention" dateFormat="yy-mm-dd"></p-calendar>
+                        </div>
+                        <div class="p-field">
+                            <label for="2">intitule</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="2" [(ngModel)]="selectedBourse.intitule" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="3">montant</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="montant"  [(ngModel)]="selectedBourse.montant"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="4">dureeEnMois</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="dureeEnMois"  [(ngModel)]="selectedBourse.dureeEnMois"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

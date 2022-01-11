@@ -1,0 +1,34 @@
+<p-dialog [(visible)]="viewEncadrementEtudiantDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">annee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedEncadrementEtudiant.annee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">tempsEstimePourCetteAnnne</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="2"  [(ngModel)]="selectedEncadrementEtudiant.tempsEstimePourCetteAnnne" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">sujetEtude</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="3" [(ngModel)]="selectedEncadrementEtudiant.sujetEtude" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">codirectionInternationale</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedEncadrementEtudiant.codirectionInternationale" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">cursus</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="5" [(ngModel)]="selectedEncadrementEtudiant.cursus" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,19 @@
+<p-dialog [(visible)]="editDistinctionDialog" [style]="{width: '450px'}" header="Distinction Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editDistinctionForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">dateObtention</label>
+                <p-calendar  formControlName="dateObtention" dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+            <div class="p-field">
+                <label for="2">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="2" formControlName="intitule" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

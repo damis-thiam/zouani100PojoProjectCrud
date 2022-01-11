@@ -1,0 +1,46 @@
+<p-dialog [(visible)]="viewChercheurDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="total">numeroMatricule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="1" [(ngModel)]="selectedChercheur.numeroMatricule" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">email</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedChercheur.email" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">nom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="3" [(ngModel)]="selectedChercheur.nom" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">prenom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="4" [(ngModel)]="selectedChercheur.prenom" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">affectationGeographiquePays</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="5" [(ngModel)]="selectedChercheur.affectationGeographiquePays" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">affectationGeographiqueVille</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="6" [(ngModel)]="selectedChercheur.affectationGeographiqueVille" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">natureImplication</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="7" [(ngModel)]="selectedChercheur.natureImplication" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">resume</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="8" [(ngModel)]="selectedChercheur.resume" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">formationEnManagement</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="9"  [(ngModel)]="selectedChercheur.formationEnManagement" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

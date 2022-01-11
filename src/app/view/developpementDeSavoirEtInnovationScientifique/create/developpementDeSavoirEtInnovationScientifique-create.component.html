@@ -1,0 +1,138 @@
+    <p-dialog [(visible)]="createDeveloppementDeSavoirEtInnovationScientifiqueDialog" [style]="{width: '70vw'}" header="DeveloppementDeSavoirEtInnovationScientifique Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="DeveloppementDeSavoirEtInnovationScientifique">
+                        <div class="p-field">
+                            <label for="1">titreInstrument</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="titreInstrument" id="1" [(ngModel)]="selectedDeveloppementDeSavoirEtInnovationScientifique.titreInstrument" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">role</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="role" id="2" [(ngModel)]="selectedDeveloppementDeSavoirEtInnovationScientifique.role" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="3">anneeMiseEnOeuvre</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="anneeMiseEnOeuvre"  [(ngModel)]="selectedDeveloppementDeSavoirEtInnovationScientifique.anneeMiseEnOeuvre"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="4">codeveloppeurs</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="codeveloppeurs" id="4" [(ngModel)]="selectedDeveloppementDeSavoirEtInnovationScientifique.codeveloppeurs" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="5">lienWeb</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="lienWeb" id="5" [(ngModel)]="selectedDeveloppementDeSavoirEtInnovationScientifique.lienWeb" required autofocus />
+                        </div>
+            </p-tabPanel>
+                    <p-tabPanel header="TypeSavoirDeveloppementDeSavoirEtInnovationScientifique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>typeSavoir</label>
+                                    <p-dropdown [options]="mytypeSavoirsRef" [(ngModel)]="selectedTypeSavoirDeveloppementDeSavoirEtInnovationScientifique.typeSavoirVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addTypeSavoirDeveloppementDeSavoirEtInnovationScientifique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="typeSavoirDeveloppementDeSavoirEtInnovationScientifiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>typeSavoir reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.typeSavoirVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteTypeSavoirDeveloppementDeSavoirEtInnovationScientifique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="ModeDiffusionDeveloppementDeSavoirEtInnovationScientifique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>modeDiffusion</label>
+                                    <p-dropdown [options]="mymodeDiffusionsRef" [(ngModel)]="selectedModeDiffusionDeveloppementDeSavoirEtInnovationScientifique.modeDiffusionVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addModeDiffusionDeveloppementDeSavoirEtInnovationScientifique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="modeDiffusionDeveloppementDeSavoirEtInnovationScientifiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>modeDiffusion reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.modeDiffusionVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteModeDiffusionDeveloppementDeSavoirEtInnovationScientifique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="CaracterisationDeveloppementDeSavoirEtInnovationScientifique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>caracterisation</label>
+                                    <p-dropdown [options]="mycaracterisationsRef" [(ngModel)]="selectedCaracterisationDeveloppementDeSavoirEtInnovationScientifique.caracterisationVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addCaracterisationDeveloppementDeSavoirEtInnovationScientifique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="caracterisationDeveloppementDeSavoirEtInnovationScientifiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>caracterisation reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.caracterisationVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteCaracterisationDeveloppementDeSavoirEtInnovationScientifique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

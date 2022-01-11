@@ -1,0 +1,40 @@
+<p-dialog [(visible)]="viewExpertiseScientifiqueDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">annee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedExpertiseScientifique.annee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">intitule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedExpertiseScientifique.intitule" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">nombreJourConsacrePourCetteAnnee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedExpertiseScientifique.nombreJourConsacrePourCetteAnnee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">periodeRemiseRapportMois</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedExpertiseScientifique.periodeRemiseRapportMois" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">periodeRemiseRapportAnnee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="5"  [(ngModel)]="selectedExpertiseScientifique.periodeRemiseRapportAnnee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">commentairesEventuels</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="6" [(ngModel)]="selectedExpertiseScientifique.commentairesEventuels" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

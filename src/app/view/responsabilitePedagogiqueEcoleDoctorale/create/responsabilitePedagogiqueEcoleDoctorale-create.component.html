@@ -1,0 +1,38 @@
+    <p-dialog [(visible)]="createResponsabilitePedagogiqueEcoleDoctoraleDialog" [style]="{width: '70vw'}" header="ResponsabilitePedagogiqueEcoleDoctorale Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="ResponsabilitePedagogiqueEcoleDoctorale">
+                            <div class="p-field">
+                                <label for="1">annee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.annee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="2">tempsEstimePourCetteAnnne</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.tempsEstimePourCetteAnnne"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="3">appelServiceRenforcementCapaciteSud</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="appelServiceRenforcementCapaciteSud"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.appelServiceRenforcementCapaciteSud"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="4">ecoleDoctoraleInternational</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="ecoleDoctoraleInternational"  [(ngModel)]="selectedResponsabilitePedagogiqueEcoleDoctorale.ecoleDoctoraleInternational"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

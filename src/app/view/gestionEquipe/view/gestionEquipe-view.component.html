@@ -1,0 +1,38 @@
+<p-dialog [(visible)]="viewGestionEquipeDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">annee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedGestionEquipe.annee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">tempsEstimePourCetteAnnne</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="2"  [(ngModel)]="selectedGestionEquipe.tempsEstimePourCetteAnnne" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">nombrePersonneHorsEtudiantEtDoctorant</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedGestionEquipe.nombrePersonneHorsEtudiantEtDoctorant" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">nombrePersonneMemeNonIrd</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedGestionEquipe.nombrePersonneMemeNonIrd" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">nombrePersonneMemeSousConventionsOuContratProjet</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="5"  [(ngModel)]="selectedGestionEquipe.nombrePersonneMemeSousConventionsOuContratProjet" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

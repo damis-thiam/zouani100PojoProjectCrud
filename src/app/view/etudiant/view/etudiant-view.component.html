@@ -1,0 +1,22 @@
+<p-dialog [(visible)]="viewEtudiantDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="total">nom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="1" [(ngModel)]="selectedEtudiant.nom" required autofocus  disabled/>
+            </div>
+            <div class="p-field">
+                <label for="total">prenom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedEtudiant.prenom" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">anneeNaissance</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedEtudiant.anneeNaissance" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,22 @@
+    <p-dialog [(visible)]="createInstrumentsEtDispositifsIrdProjetActiviteRechercheDialog" [style]="{width: '70vw'}" header="InstrumentsEtDispositifsIrdProjetActiviteRecherche Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="InstrumentsEtDispositifsIrdProjetActiviteRecherche">
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

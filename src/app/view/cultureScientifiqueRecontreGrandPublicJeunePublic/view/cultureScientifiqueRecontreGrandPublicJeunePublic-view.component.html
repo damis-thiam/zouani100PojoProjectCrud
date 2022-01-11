@@ -1,0 +1,46 @@
+<p-dialog [(visible)]="viewCultureScientifiqueRecontreGrandPublicJeunePublicDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">tempsEstimePourCetteAnnne</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="1"  [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.tempsEstimePourCetteAnnne" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">intituleSujet</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="2" [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.intituleSujet" required autofocus  disabled/>
+            </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">periodeAnnee</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="3"  [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.periodeAnnee" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">periodeMois</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="4"  [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.periodeMois" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">evenementGrandPublic</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="5"  [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.evenementGrandPublic" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="totalPaye">volumePublic</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2"  id="6"  [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.volumePublic" [disabled]="true"></p-inputNumber>
+                    </div>
+                </div>
+            <div class="p-field">
+                <label for="total">lienWeb</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText  id="7" [(ngModel)]="selectedCultureScientifiqueRecontreGrandPublicJeunePublic.lienWeb" required autofocus  disabled/>
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

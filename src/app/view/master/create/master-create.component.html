@@ -1,0 +1,30 @@
+    <p-dialog [(visible)]="createMasterDialog" [style]="{width: '70vw'}" header="Master Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="Master">
+                        <div class="p-field">
+                            <label for="1">intitule</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="1" [(ngModel)]="selectedMaster.intitule" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="2">international</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="international"  [(ngModel)]="selectedMaster.international"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

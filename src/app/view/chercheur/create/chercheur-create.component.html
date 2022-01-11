@@ -1,0 +1,310 @@
+    <p-dialog [(visible)]="createChercheurDialog" [style]="{width: '70vw'}" header="Chercheur Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="Chercheur">
+                        <div class="p-field">
+                            <label for="1">numeroMatricule</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="numeroMatricule" id="1" [(ngModel)]="selectedChercheur.numeroMatricule" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">email</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="email" id="2" [(ngModel)]="selectedChercheur.email" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="3">nom</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nom" id="3" [(ngModel)]="selectedChercheur.nom" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="4">prenom</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="prenom" id="4" [(ngModel)]="selectedChercheur.prenom" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="5">affectationGeographiquePays</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="affectationGeographiquePays" id="5" [(ngModel)]="selectedChercheur.affectationGeographiquePays" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="6">affectationGeographiqueVille</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="affectationGeographiqueVille" id="6" [(ngModel)]="selectedChercheur.affectationGeographiqueVille" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="7">natureImplication</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="natureImplication" id="7" [(ngModel)]="selectedChercheur.natureImplication" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="8">resume</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="resume" id="8" [(ngModel)]="selectedChercheur.resume" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="9">formationEnManagement</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="9" placeholder="formationEnManagement"  [(ngModel)]="selectedChercheur.formationEnManagement"></p-inputNumber>
+                            </div>
+            </p-tabPanel>
+                    <p-tabPanel header="DomaineScientifiqueChercheur">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>domaineScientifique</label>
+                                    <p-dropdown [options]="mydomaineScientifiquesRef" [(ngModel)]="selectedDomaineScientifiqueChercheur.domaineScientifiqueVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addDomaineScientifiqueChercheur()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="domaineScientifiqueChercheurListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>domaineScientifique reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.domaineScientifiqueVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteDomaineScientifiqueChercheur(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="EnjeuxIrdChercheur">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>enjeuxIrd</label>
+                                    <p-dropdown [options]="myenjeuxIrdsRef" [(ngModel)]="selectedEnjeuxIrdChercheur.enjeuxIrdVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addEnjeuxIrdChercheur()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="enjeuxIrdChercheurListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>enjeuxIrd reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.enjeuxIrdVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteEnjeuxIrdChercheur(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="ZoneActiviteInteractionRecherche">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                    <div class="p-field">
+                                        <label for="1">pays</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="pays" id="1" [(ngModel)]="selectedZoneActiviteInteractionRecherche.pays" required autofocus />
+                                    </div>
+
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addZoneActiviteInteractionRecherche()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="zoneActiviteInteractionRechercheListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>pays</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.pays}}</td>
+                                        <td>
+                                            <button (click)="deleteZoneActiviteInteractionRecherche(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="CommunauteSavoirChercheur">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                    <div class="p-field">
+                                        <label for="1">communauteSavoir</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="communauteSavoir" id="1" [(ngModel)]="selectedCommunauteSavoirChercheur.communauteSavoir" required autofocus />
+                                    </div>
+
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addCommunauteSavoirChercheur()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="communauteSavoirChercheurListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>communauteSavoir</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.communauteSavoir}}</td>
+                                        <td>
+                                            <button (click)="deleteCommunauteSavoirChercheur(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="InstrumentsEtDispositifsIrdChercheur">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>typeInstrumentsEtDispositifsIrd</label>
+                                    <p-dropdown [options]="mytypeInstrumentsEtDispositifsIrdsRef" [(ngModel)]="selectedInstrumentsEtDispositifsIrdChercheur.typeInstrumentsEtDispositifsIrdVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addInstrumentsEtDispositifsIrdChercheur()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="instrumentsEtDispositifsIrdChercheurListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>typeInstrumentsEtDispositifsIrd reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.typeInstrumentsEtDispositifsIrdVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteInstrumentsEtDispositifsIrdChercheur(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="IdentifiantAuteurExpert">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                    <div class="p-field">
+                                        <label for="1">valeur</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="valeur" id="1" [(ngModel)]="selectedIdentifiantAuteurExpert.valeur" required autofocus />
+                                    </div>
+
+                            <div class="row" >
+                                <label>identifiantRecherche</label>
+                                    <p-dropdown [options]="myidentifiantRecherchesRef" [(ngModel)]="selectedIdentifiantAuteurExpert.identifiantRechercheVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addIdentifiantAuteurExpert()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="identifiantAuteurExpertListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>identifiantRecherche reference</th>
+                                                    <th>valeur</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.identifiantRechercheVo?.code}}</td>
+                                                <td>{{p.valeur}}</td>
+                                        <td>
+                                            <button (click)="deleteIdentifiantAuteurExpert(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="Distinction">
+                        <div class="p-grid">
+                            <div class="p-col">
+                                    <div class="p-field">
+                                        <label for="1">dateObtention</label>
+                                        <p-calendar  id="1" placeholder="dateObtention"  [(ngModel)]="selectedDistinction.dateObtention" dateFormat="yy-mm-dd"></p-calendar>
+                                    </div>
+                                    <div class="p-field">
+                                        <label for="2">intitule</label>
+                                        <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intitule" id="2" [(ngModel)]="selectedDistinction.intitule" required autofocus />
+                                    </div>
+
+                            <div class="row" >
+                                <label>organisme</label>
+                                    <p-dropdown [options]="myorganismesRef" [(ngModel)]="selectedDistinction.organismeVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>typeParticipation</label>
+                                    <p-dropdown [options]="mytypeParticipationsRef" [(ngModel)]="selectedDistinction.typeParticipationVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addDistinction()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="distinctionListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                    <th>dateObtention</th>
+                                                    <th>intitule</th>
+                                                        <th>organisme reference</th>
+                                                        <th>typeParticipation reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                <td>{{p.dateObtention}}</td>
+                                                <td>{{p.intitule}}</td>
+                                                        <td>{{p.organismeVo?.code}}</td>
+                                                        <td>{{p.typeParticipationVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteDistinction(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

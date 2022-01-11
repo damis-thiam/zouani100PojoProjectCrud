@@ -1,0 +1,113 @@
+
+    <div class="p-grid">
+        <div class="p-col-12">
+
+            <p-toast></p-toast>
+
+            <div class="card">
+                <p-toolbar styleClass="p-mb-4">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateBourse('bourse')"></button>
+                        <button pButton pRipple label="Search"
+                                icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                                class="p-button-success p-mr-2 p-mb-2"
+                                (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <div class="" *ngIf="findByCriteriaShow">
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMin" [(ngModel)]="searchBourseMin"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                                    <p-calendar class="p-mr-2"
+                                                placeholder="dateMax" [(ngModel)]="searchBourseMax"
+                                                dateFormat="dd.mm.yy"></p-calendar>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="montantMin" [(ngModel)]="searchBourse.montantMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="montantMax" [(ngModel)]="searchBourse.montantMax"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="dureeEnMoisMin" [(ngModel)]="searchBourse.dureeEnMoisMin"></p-inputNumber>
+                                        <p-inputNumber class="p-mr-2"
+                                                       placeholder="dureeEnMoisMax" [(ngModel)]="searchBourse.dureeEnMoisMax"></p-inputNumber>
+                            <button pButton pRipple label="Submit" icon="pi pi-sort-amount-down"
+                                    class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                        </div>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [value]="bourses" [columns]="cols" [rows]="4" [paginator]="true"
+                        [globalFilterFields]="['reference','total','totalPaye']" [(selection)]="selectedBourse"
+                        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Liste des Bourses</h5>
+                            <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..."/>
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                                <th pSortableColumn="id">id
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="dateObtention">dateObtention
+                                    <p-sortIcon field="dateObtention"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="intitule">intitule
+                                    <p-sortIcon field="intitule"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="montant">montant
+                                    <p-sortIcon field="montant"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="dureeEnMois">dureeEnMois
+                                    <p-sortIcon field="dureeEnMois"></p-sortIcon>
+                                </th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-bourse>
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="bourse"></p-tableCheckbox>
+                            </td>
+                            <td>{{bourse.id }}
+                            <td>{{bourse.dateObtention | date:'dd/MM/yyyy' }}</td>
+                            <td>{{bourse.intitule }}
+                            <td>{{bourse.montant }}
+                            <td>{{bourse.dureeEnMois }}
+
+                            <td>
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success p-mr-2"
+                                        (click)="editBourse(bourse)"></button>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                        (click)="viewBourse(bourse)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteBourse(bourse)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total
+                            there {{bourses ? bourses.length == 1 ? 'is' : 'are' : 'is' }} {{bourses ? bourses.length : 0 }} {{bourses ? bourses.length == 1 ? 'bourse' : 'bourses' : 0 }}
+                            .
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <app-bourse-create></app-bourse-create>
+            <app-bourse-edit></app-bourse-edit>
+            <app-bourse-view></app-bourse-view>
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>

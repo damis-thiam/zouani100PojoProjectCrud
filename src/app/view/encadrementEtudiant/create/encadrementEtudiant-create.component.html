@@ -1,0 +1,106 @@
+    <p-dialog [(visible)]="createEncadrementEtudiantDialog" [style]="{width: '70vw'}" header="EncadrementEtudiant Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="EncadrementEtudiant">
+                            <div class="p-field">
+                                <label for="1">annee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedEncadrementEtudiant.annee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="2">tempsEstimePourCetteAnnne</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedEncadrementEtudiant.tempsEstimePourCetteAnnne"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="3">sujetEtude</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="sujetEtude" id="3" [(ngModel)]="selectedEncadrementEtudiant.sujetEtude" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="4">codirectionInternationale</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="codirectionInternationale"  [(ngModel)]="selectedEncadrementEtudiant.codirectionInternationale"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="5">cursus</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="cursus" id="5" [(ngModel)]="selectedEncadrementEtudiant.cursus" required autofocus />
+                        </div>
+            </p-tabPanel>
+                    <p-tabPanel header="CommunauteSavoirEncadrementEtudiant">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>communauteSavoir</label>
+                                    <p-dropdown [options]="mycommunauteSavoirsRef" [(ngModel)]="selectedCommunauteSavoirEncadrementEtudiant.communauteSavoirVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addCommunauteSavoirEncadrementEtudiant()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="communauteSavoirEncadrementEtudiantListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>communauteSavoir reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.communauteSavoirVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteCommunauteSavoirEncadrementEtudiant(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="DisciplineScientifiqueEncadrementEtudiant">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>disciplineScientifique</label>
+                                    <p-dropdown [options]="mydisciplineScientifiquesRef" [(ngModel)]="selectedDisciplineScientifiqueEncadrementEtudiant.disciplineScientifiqueVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addDisciplineScientifiqueEncadrementEtudiant()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="disciplineScientifiqueEncadrementEtudiantListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>disciplineScientifique reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.disciplineScientifiqueVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteDisciplineScientifiqueEncadrementEtudiant(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

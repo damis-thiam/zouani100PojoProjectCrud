@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="editCultureScientifiqueRecontreGrandPublicJeunePublicDialog" [style]="{width: '450px'}" header="CultureScientifiqueRecontreGrandPublicJeunePublic Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editCultureScientifiqueRecontreGrandPublicJeunePublicForm">
+    <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="1">tempsEstimePourCetteAnnne</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="tempsEstimePourCetteAnnne"  formControlName="tempsEstimePourCetteAnnne"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="2">intituleSujet</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="intituleSujet" id="2" formControlName="intituleSujet" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="3">periodeAnnee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="periodeAnnee"  formControlName="periodeAnnee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="4">periodeMois</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="periodeMois"  formControlName="periodeMois"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="5">evenementGrandPublic</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="5" placeholder="evenementGrandPublic"  formControlName="evenementGrandPublic"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="6">volumePublic</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="6" placeholder="volumePublic"  formControlName="volumePublic"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="7">lienWeb</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="lienWeb" id="7" formControlName="lienWeb" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

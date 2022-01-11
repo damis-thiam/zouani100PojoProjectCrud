@@ -1,0 +1,30 @@
+    <p-dialog [(visible)]="createStatutMasterDialog" [style]="{width: '70vw'}" header="StatutMaster Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="StatutMaster">
+                        <div class="p-field">
+                            <label for="1">libelle</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="libelle" id="1" [(ngModel)]="selectedStatutMaster.libelle" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">code</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="code" id="2" [(ngModel)]="selectedStatutMaster.code" required autofocus />
+                        </div>
+            </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

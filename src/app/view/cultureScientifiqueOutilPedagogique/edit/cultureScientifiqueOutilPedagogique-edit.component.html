@@ -1,0 +1,31 @@
+<p-dialog [(visible)]="editCultureScientifiqueOutilPedagogiqueDialog" [style]="{width: '450px'}" header="CultureScientifiqueOutilPedagogique Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editCultureScientifiqueOutilPedagogiqueForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">role</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="role" id="1" formControlName="role" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="2">nomOutil</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nomOutil" id="2" formControlName="nomOutil" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="3">sortieAnnee</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="sortieAnnee"  formControlName="sortieAnnee"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="4">sortieMois</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="sortieMois"  formControlName="sortieMois"></p-inputNumber>
+                </div>
+            <div class="p-field">
+                <label for="5">lienWeb</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="lienWeb" id="5" formControlName="lienWeb" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

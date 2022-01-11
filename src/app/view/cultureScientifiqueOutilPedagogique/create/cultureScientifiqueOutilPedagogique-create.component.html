@@ -1,0 +1,176 @@
+    <p-dialog [(visible)]="createCultureScientifiqueOutilPedagogiqueDialog" [style]="{width: '70vw'}" header="CultureScientifiqueOutilPedagogique Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="CultureScientifiqueOutilPedagogique">
+                        <div class="p-field">
+                            <label for="1">role</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="role" id="1" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.role" required autofocus />
+                        </div>
+                        <div class="p-field">
+                            <label for="2">nomOutil</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nomOutil" id="2" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.nomOutil" required autofocus />
+                        </div>
+                            <div class="p-field">
+                                <label for="3">sortieAnnee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="sortieAnnee"  [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.sortieAnnee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="4">sortieMois</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="4" placeholder="sortieMois"  [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.sortieMois"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="5">lienWeb</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="lienWeb" id="5" [(ngModel)]="selectedCultureScientifiqueOutilPedagogique.lienWeb" required autofocus />
+                        </div>
+            </p-tabPanel>
+                    <p-tabPanel header="PublicCibleCultureScientifiqueOutilPedagogique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>publicCible</label>
+                                    <p-dropdown [options]="mypublicCiblesRef" [(ngModel)]="selectedPublicCibleCultureScientifiqueOutilPedagogique.publicCibleVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="row" >
+                                <label>pays</label>
+                                    <p-dropdown [options]="mypayssRef" [(ngModel)]="selectedPublicCibleCultureScientifiqueOutilPedagogique.paysVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addPublicCibleCultureScientifiqueOutilPedagogique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="publicCibleCultureScientifiqueOutilPedagogiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>publicCible reference</th>
+                                                        <th>pays reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.publicCibleVo?.code}}</td>
+                                                        <td>{{p.paysVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deletePublicCibleCultureScientifiqueOutilPedagogique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="TypeOutilCultureScientifiqueOutilPedagogique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>typeOutil</label>
+                                    <p-dropdown [options]="mytypeOutilsRef" [(ngModel)]="selectedTypeOutilCultureScientifiqueOutilPedagogique.typeOutilVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addTypeOutilCultureScientifiqueOutilPedagogique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="typeOutilCultureScientifiqueOutilPedagogiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>typeOutil reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.typeOutilVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteTypeOutilCultureScientifiqueOutilPedagogique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="PaysTypeOutilCultureScientifiqueOutilPedagogique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>pays</label>
+                                    <p-dropdown [options]="mypayssRef" [(ngModel)]="selectedPaysTypeOutilCultureScientifiqueOutilPedagogique.paysVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addPaysTypeOutilCultureScientifiqueOutilPedagogique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="paysTypeOutilCultureScientifiqueOutilPedagogiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>pays reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.paysVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deletePaysTypeOutilCultureScientifiqueOutilPedagogique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="EtablissementCultureScientifiqueOutilPedagogique">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>etablissement</label>
+                                    <p-dropdown [options]="myetablissementsRef" [(ngModel)]="selectedEtablissementCultureScientifiqueOutilPedagogique.etablissementVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addEtablissementCultureScientifiqueOutilPedagogique()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="etablissementCultureScientifiqueOutilPedagogiqueListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>etablissement reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.etablissementVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteEtablissementCultureScientifiqueOutilPedagogique(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

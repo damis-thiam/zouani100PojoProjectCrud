@@ -1,0 +1,166 @@
+    <p-dialog [(visible)]="createEnseignementDialog" [style]="{width: '70vw'}" header="Enseignement Details" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+            <p-tabView>
+            <p-tabPanel header="Enseignement">
+                            <div class="p-field">
+                                <label for="1">annee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="1" placeholder="annee"  [(ngModel)]="selectedEnseignement.annee"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="2">tempsEstimePourCetteAnnne</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="2" placeholder="tempsEstimePourCetteAnnne"  [(ngModel)]="selectedEnseignement.tempsEstimePourCetteAnnne"></p-inputNumber>
+                            </div>
+                            <div class="p-field">
+                                <label for="3">nombreHeureDispenseesDansAnnee</label>
+                                <p-inputNumber class="p-mb-2 p-mr-2"  id="3" placeholder="nombreHeureDispenseesDansAnnee"  [(ngModel)]="selectedEnseignement.nombreHeureDispenseesDansAnnee"></p-inputNumber>
+                            </div>
+                        <div class="p-field">
+                            <label for="4">denominationEnseignement</label>
+                            <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="denominationEnseignement" id="4" [(ngModel)]="selectedEnseignement.denominationEnseignement" required autofocus />
+                        </div>
+            </p-tabPanel>
+                    <p-tabPanel header="NiveauEtudeEnseignement">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>niveauEtude</label>
+                                    <p-dropdown [options]="myniveauEtudesRef" [(ngModel)]="selectedNiveauEtudeEnseignement.niveauEtudeVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addNiveauEtudeEnseignement()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="niveauEtudeEnseignementListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>niveauEtude reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.niveauEtudeVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteNiveauEtudeEnseignement(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="ModaliteEtudeEnseignement">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>modaliteEtude</label>
+                                    <p-dropdown [options]="mymodaliteEtudesRef" [(ngModel)]="selectedModaliteEtudeEnseignement.modaliteEtudeVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addModaliteEtudeEnseignement()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="modaliteEtudeEnseignementListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>modaliteEtude reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.modaliteEtudeVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteModaliteEtudeEnseignement(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="EtablissementEnseignement">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>etablissement</label>
+                                    <p-dropdown [options]="myetablissementsRef" [(ngModel)]="selectedEtablissementEnseignement.etablissementVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addEtablissementEnseignement()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="etablissementEnseignementListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>etablissement reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.etablissementVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteEtablissementEnseignement(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+                    <p-tabPanel header="NatureEnseignement">
+                        <div class="p-grid">
+                            <div class="p-col">
+                            <div class="row" >
+                                <label>natureEtude</label>
+                                    <p-dropdown [options]="mynatureEtudesRef" [(ngModel)]="selectedNatureEnseignement.natureEtudeVo.code" placeholder="Select" optionLabel="code" optionValue="code" [showClear]="true"></p-dropdown>
+                            </div>
+                        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="addNatureEnseignement()"></p-button>
+                            </div>
+                            <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [value]="natureEnseignementListe" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                                        <th>natureEtude reference</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                                        <td>{{p.natureEtudeVo?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteNatureEnseignement(p)" pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                            </div>
+                        </div>
+                        </p-tabPanel>
+
+            </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+
+        </ng-template>
+
+
+
+
+    </p-dialog>

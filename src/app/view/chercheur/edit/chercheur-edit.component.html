@@ -1,0 +1,47 @@
+<p-dialog [(visible)]="editChercheurDialog" [style]="{width: '450px'}" header="Chercheur Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editChercheurForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">numeroMatricule</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="numeroMatricule" id="1" formControlName="numeroMatricule" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="2">email</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="email" id="2" formControlName="email" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="3">nom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="nom" id="3" formControlName="nom" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="4">prenom</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="prenom" id="4" formControlName="prenom" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="5">affectationGeographiquePays</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="affectationGeographiquePays" id="5" formControlName="affectationGeographiquePays" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="6">affectationGeographiqueVille</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="affectationGeographiqueVille" id="6" formControlName="affectationGeographiqueVille" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="7">natureImplication</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="natureImplication" id="7" formControlName="natureImplication" required autofocus />
+            </div>
+            <div class="p-field">
+                <label for="8">resume</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="resume" id="8" formControlName="resume" required autofocus />
+            </div>
+                <div class="p-field">
+                    <label for="9">formationEnManagement</label>
+                    <p-inputNumber class="p-mb-2 p-mr-2"  id="9" placeholder="formationEnManagement"  formControlName="formationEnManagement"></p-inputNumber>
+                </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>

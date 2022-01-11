@@ -1,0 +1,15 @@
+<p-dialog [(visible)]="editIdentifiantAuteurExpertDialog" [style]="{width: '450px'}" header="IdentifiantAuteurExpert Edit" [modal]="true"
+    styleClass="p-fluid" [formGroup]="editIdentifiantAuteurExpertForm">
+    <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="1">valeur</label>
+                <input class="p-mb-2 p-mr-2" type="text" pInputText placeholder="valeur" id="1" formControlName="valeur" required autofocus />
+            </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+            (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="submit()"></button>
+    </ng-template>
+</p-dialog>
